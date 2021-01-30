@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConjugacionController } from './conjugacion/conjugacion.controller';
-import { ConjugacionService } from './conjugacion/conjugacion.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConjugacionModule } from './conjugacion/conjugacion.module';
 
 @Module({
   imports: [
+    ConjugacionModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -18,7 +18,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       synchronize: true,
     }),
   ],
-  controllers: [AppController, ConjugacionController],
-  providers: [AppService, ConjugacionService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
