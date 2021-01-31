@@ -1,6 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { ConjugacionService } from './conjugacion.service';
 import { Question } from '../entities/question.entity';
+import { questions } from './questions';
 
 @Controller('conjugacion')
 export class ConjugacionController {
@@ -8,32 +9,6 @@ export class ConjugacionController {
 
   @Get('init-question')
   async initQuestion(): Promise<void> {
-    const questions = [
-      {
-        description: 'ser',
-        answers: ['soy', 'eres', 'es', 'somos', 'sois', 'son'],
-      },
-      {
-        description: 'hablar',
-        answers: ['hablo', 'hablas', 'habla', 'hablamos', 'habláis', 'hablan'],
-      },
-      {
-        description: 'comer',
-        answers: ['como', 'comes', 'come', 'comemos', 'coméis', 'comen'],
-      },
-      {
-        description: 'escribir',
-        answers: [
-          'escribo',
-          'escribes',
-          'escribe',
-          'escribimos',
-          'escribís',
-          'escriben',
-        ],
-      },
-    ];
-
     await this.conjugacionService.clear();
 
     for (const question of questions) {
