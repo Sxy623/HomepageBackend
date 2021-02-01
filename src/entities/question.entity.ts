@@ -9,5 +9,8 @@ export class Question {
   description: string;
 
   @Column()
+  tense: string;
+
+  @Column()
   answers: string;
 }

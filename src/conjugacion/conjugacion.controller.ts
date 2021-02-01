@@ -14,6 +14,7 @@ export class ConjugacionController {
     for (const question of questions) {
       const newQuestion = new Question();
       newQuestion.description = question.description;
+      newQuestion.tense = question.tense;
       newQuestion.answers = JSON.stringify(question.answers);
       await this.conjugacionService.save(newQuestion);
     }
